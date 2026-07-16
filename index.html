@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de fichas técnicas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <h1>Catálogo de productos</h1>
+  <p class="subtitle">Consulta la ficha técnica de cada producto</p>
+</header>
+
+<main>
+  <div class="controls">
+    <input id="search" type="search" placeholder="Buscar por nombre o código..." autocomplete="off">
+    <select id="category-filter">
+      <option value="">Todas las categorías</option>
+    </select>
+  </div>
+
+  <p id="empty-message" class="empty-message" hidden>No se encontraron productos.</p>
+
+  <div id="grid" class="grid"></div>
+</main>
+
+<footer class="site-footer">
+  <p></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

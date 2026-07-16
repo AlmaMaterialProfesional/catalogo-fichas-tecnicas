@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: simple
+media_folder: uploads
+public_folder: /uploads
+
+collections:
+  - name: catalogo
+    label: Catálogo
+    files:
+      - name: productos
+        label: Productos
+        file: content/products.json
+        fields:
+          - label: Productos
+            name: products
+            widget: list
+            summary: "{{fields.title}} ({{fields.code}})"
+            fields:
+              - { label: "Nombre del producto", name: "title", widget: "string" }
+              - { label: "Código / SKU", name: "code", widget: "string", required: false }
+              - { label: "Categoría", name: "category", widget: "string", required: false }
+              - { label: "Imagen", name: "image", widget: "image", required: false }
+              - { label: "Ficha técnica (PDF)", name: "pdf", widget: "file", required: false }

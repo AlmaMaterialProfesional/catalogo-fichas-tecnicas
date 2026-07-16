@@ -1,0 +1,18 @@
+{
+  "products": [
+    {
+      "title": "Producto de ejemplo 1",
+      "code": "DEMO-001",
+      "category": "Categoría de ejemplo",
+      "image": "",
+      "pdf": ""
+    },
+    {
+      "title": "Producto de ejemplo 2",
+      "code": "DEMO-002",
+      "category": "Categoría de ejemplo",
+      "image": "",
+      "pdf": ""
+    }
+  ]
+}

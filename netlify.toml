@@ -1,0 +1,8 @@
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/admin/config.yml"
+  [headers.values]
+    Content-Type = "text/yaml"
