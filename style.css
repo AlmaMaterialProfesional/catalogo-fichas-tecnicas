@@ -3,8 +3,8 @@
   --color-surface: #ffffff;
   --color-text: #1c1c1c;
   --color-muted: #6b6b6b;
-  --color-accent: #1f6f4a;
-  --color-accent-hover: #185a3b;
+  --color-accent: #d9720f;
+  --color-accent-hover: #b25c0c;
   --color-border: #e2e2df;
   --radius: 10px;
 }
@@ -21,8 +21,22 @@ body {
 }
 
 .site-header {
-  padding: 24px 16px 12px;
-  text-align: center;
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.site-logo {
+  height: 56px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.site-header-text {
+  text-align: left;
 }
 
 .site-header h1 {
