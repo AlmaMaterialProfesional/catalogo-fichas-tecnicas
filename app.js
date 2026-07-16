@@ -47,11 +47,17 @@ function renderCard(product) {
   title.textContent = product.title || "Sin nombre";
   body.appendChild(title);
 
-  if (product.code) {
-    const code = document.createElement("span");
-    code.className = "card-code";
-    code.textContent = product.code;
-    body.appendChild(code);
+  const variants = Array.isArray(product.variants) ? product.variants : [];
+  if (variants.length) {
+    const codeList = document.createElement("div");
+    codeList.className = "card-codes";
+    variants.forEach((variant) => {
+      const chip = document.createElement("span");
+      chip.className = "code-chip";
+      chip.textContent = variant.size ? `${variant.code} (${variant.size})` : variant.code;
+      codeList.appendChild(chip);
+    });
+    body.appendChild(codeList);
   }
 
   if (product.category) {
@@ -94,10 +100,11 @@ function applyFilters() {
   const category = categoryFilter.value;
 
   const filtered = state.products.filter((product) => {
+    const variants = Array.isArray(product.variants) ? product.variants : [];
     const matchesQuery =
       !query ||
       normalize(product.title).includes(query) ||
-      normalize(product.code).includes(query);
+      variants.some((variant) => normalize(variant.code).includes(query));
     const matchesCategory = !category || product.category === category;
     return matchesQuery && matchesCategory;
   });

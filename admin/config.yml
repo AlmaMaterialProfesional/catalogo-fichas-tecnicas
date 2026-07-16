@@ -17,10 +17,16 @@ collections:
           - label: Productos
             name: products
             widget: list
-            summary: "{{fields.title}} ({{fields.code}})"
+            summary: "{{fields.title}}"
             fields:
               - { label: "Nombre del producto", name: "title", widget: "string" }
-              - { label: "Código / SKU", name: "code", widget: "string", required: false }
               - { label: "Categoría", name: "category", widget: "string", required: false }
               - { label: "Imagen", name: "image", widget: "image", required: false }
               - { label: "Ficha técnica (PDF)", name: "pdf", widget: "file", required: false }
+              - label: "Códigos / medidas"
+                name: variants
+                widget: list
+                summary: "{{fields.code}} {{fields.size}}"
+                fields:
+                  - { label: "Código / SKU", name: "code", widget: "string" }
+                  - { label: "Medida (opcional)", name: "size", widget: "string", required: false }

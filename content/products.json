@@ -2,10 +2,12 @@
   "products": [
     {
       "title": "VENTOSA VB260",
-      "code": "807",
       "category": "MAQUINARIA",
       "image": "/uploads/ventosa-de-baldosa-alma.png",
-      "pdf": "/uploads/ficha-tecnica-ventosa.pdf"
+      "pdf": "/uploads/ficha-tecnica-ventosa.pdf",
+      "variants": [
+        { "code": "807", "size": "" }
+      ]
     }
   ]
 }

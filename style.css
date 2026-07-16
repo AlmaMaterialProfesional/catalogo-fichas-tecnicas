@@ -127,6 +127,21 @@ main {
   font-size: 0.85rem;
 }
 
+.card-codes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.code-chip {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
 .card-category {
   display: inline-block;
   align-self: flex-start;
