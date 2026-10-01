@@ -28,7 +28,8 @@
   .page canvas{display:block;width:100%;height:100%}
   #cargando{color:#ddd;margin-top:30vh;text-align:center;font-size:15px}
   #barra{width:200px;height:4px;background:#555;margin:12px auto;border-radius:2px;overflow:hidden}
-  #barra div{height:100%;width:0;background:var(--naranja);transition:width .2s}
+  #barra div{height:100%;width:35%;background:var(--naranja);animation:mov 1.1s ease-in-out infinite alternate}
+  @keyframes mov{from{margin-left:0}to{margin-left:65%}}
   @media (max-width:520px){.zoom{display:none} header .titulo{font-size:13px}}
 </style>
 </head>
@@ -49,9 +50,27 @@ let pdf, escala = 1, paginas = [], ancho0 = 0, alto0 = 0;
 
 function anchoBase(){ return Math.min(window.innerWidth - 16, 1000); }
 
-const tarea = pdfjsLib.getDocument({ url: "./catalogo.pdf", disableAutoFetch: true });
-tarea.onProgress = p => { if (p.total) document.querySelector("#barra div").style.width = (100*p.loaded/p.total)+"%"; };
-pdf = await tarea.promise;
+const URL_PDF = "./catalogo.pdf";
+const TROZO = 131072;
+async function rango(a, b){
+  const r = await fetch(URL_PDF, { headers: { Range: `bytes=${a}-${b-1}` } });
+  if (r.status !== 206) throw new Error("sin-rangos");
+  return { r, d: new Uint8Array(await r.arrayBuffer()) };
+}
+try {
+  // Carga por trozos: solo se descarga lo necesario para las páginas visibles
+  const ini = await rango(0, TROZO);
+  const total = +ini.r.headers.get("content-range").split("/")[1];
+  const tr = new pdfjsLib.PDFDataRangeTransport(total, ini.d);
+  tr.requestDataRange = (a, b) => {
+    const intento = n => rango(a, b).then(x => tr.onDataRange(a, x.d)).catch(e => { if (n > 0) setTimeout(() => intento(n-1), 800); });
+    intento(3);
+  };
+  pdf = await pdfjsLib.getDocument({ range: tr, rangeChunkSize: TROZO, disableAutoFetch: false, disableStream: true }).promise;
+} catch (e) {
+  // Alternativa: descarga completa si el servidor no admite rangos
+  pdf = await pdfjsLib.getDocument({ url: URL_PDF }).promise;
+}
 document.getElementById("total").textContent = pdf.numPages;
 numIn.max = pdf.numPages;
 const p1 = await pdf.getPage(1);
