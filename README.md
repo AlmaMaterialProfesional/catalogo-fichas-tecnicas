@@ -5,13 +5,26 @@ Sitio web estático para consultar las fichas técnicas (PDF) de los productos d
 ## Cómo funciona
 
 - `index.html`, `style.css`, `app.js`: la página pública (a la que lleva el QR). Lee `content/products.json` y muestra las secciones del catálogo como desplegables con sus productos.
-- `ficha/`: visor de fichas técnicas; muestra el PDF dentro de la web (usa el motor PDF de `catalogo/`).
+- `ficha/`: visor de fichas técnicas. Muestra las imágenes de `uploads/paginas/` (rápidas, ~250 KB por página) cuando corresponden al PDF publicado; si no, dibuja el PDF con el motor de `catalogo/`. El botón "Descargar" siempre da el PDF original.
+- `content/paginas.json` y `uploads/paginas/`: imágenes de cada página de las fichas, generadas con `herramientas/generar-paginas.mjs`.
 - `catalogo/`: visor online del catálogo completo.
 - `content/products.json`: la "base de datos": secciones, y dentro de cada una sus productos en orden (nombre, descripción corta, imagen y PDF).
 - `admin/`: panel de administración (Decap CMS) para añadir, editar o borrar productos con formularios, sin tocar código.
 - `uploads/`: aquí se guardan las imágenes y PDFs que se suban desde el panel.
 
 No hace falta Node.js, npm, ni ningún paso de compilación. Es HTML/CSS/JS puro.
+
+### Regenerar las imágenes de las fichas (opcional)
+
+Si se cambia o añade una ficha, la web sigue funcionando (el visor dibuja el PDF directamente), pero abrirá más lento hasta regenerar sus imágenes. Con Node.js instalado:
+
+```
+cd herramientas
+npm install
+node generar-paginas.mjs
+```
+
+Después se suben a GitHub `content/paginas.json` y `uploads/paginas/`.
 
 ## Puesta en marcha (una sola vez)
 

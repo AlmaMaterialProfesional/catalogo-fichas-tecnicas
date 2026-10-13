@@ -24,7 +24,7 @@
   main{padding:calc(68px + env(safe-area-inset-top,0px)) 8px calc(16px + env(safe-area-inset-bottom,0px));
     display:flex;flex-direction:column;align-items:center;gap:10px}
   .page{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.4);position:relative;max-width:100%}
-  .page canvas{display:block;width:100%;height:100%}
+  .page canvas,.page img{display:block;width:100%;height:100%}
   .estado{color:#ddd;margin-top:30vh;text-align:center;font-size:15px;line-height:1.6;padding:0 16px}
   .estado a{color:#fff}
   #barra{width:200px;height:4px;background:#555;margin:12px auto;border-radius:2px;overflow:hidden}
@@ -42,9 +42,6 @@
 </header>
 <main id="visor"><div class="estado">Cargando ficha técnica…<div id="barra"><div></div></div></div></main>
 <script type="module">
-import * as pdfjsLib from "../catalogo/pdf.min.mjs";
-pdfjsLib.GlobalWorkerOptions.workerSrc = "../catalogo/pdf.worker.min.mjs";
-
 const visor = document.getElementById("visor");
 const params = new URLSearchParams(location.search);
 const archivo = params.get("f") || "";
@@ -81,71 +78,113 @@ const descargar = document.getElementById("descargar");
 descargar.href = archivo;
 descargar.setAttribute("download", archivo.split("/").pop());
 
-let pdf, escala = 1, paginas = [], ancho0 = 0, alto0 = 0;
+// Cada página es un contenedor con la proporción de la página; se rellena con una imagen o un canvas
+let escala = 1, paginas = [], pintar = () => {}, liberar = () => {};
 function anchoBase(){ return Math.min(window.innerWidth - 16, 1000); }
-
-const TROZO = 131072;
-async function rango(a, b){
-  const r = await fetch(archivo, { headers: { Range: `bytes=${a}-${b-1}` } });
-  if (r.status !== 206) throw new Error("sin-rangos");
-  return { r, d: new Uint8Array(await r.arrayBuffer()) };
+function crearPaginas(proporciones){
+  visor.innerHTML = "";
+  paginas = proporciones.map((p, i) => {
+    const d = document.createElement("div");
+    d.className = "page"; d.dataset.n = i + 1; d.dataset.p = p;
+    visor.appendChild(d);
+    return d;
+  });
 }
-try {
-  try {
-    // Carga por trozos: solo se descarga lo necesario para las páginas visibles
-    const ini = await rango(0, TROZO);
-    const total = +ini.r.headers.get("content-range").split("/")[1];
-    const tr = new pdfjsLib.PDFDataRangeTransport(total, ini.d);
-    tr.requestDataRange = (a, b) => {
-      const intento = n => rango(a, b).then(x => tr.onDataRange(a, x.d)).catch(() => { if (n > 0) setTimeout(() => intento(n-1), 800); });
-      intento(3);
-    };
-    pdf = await pdfjsLib.getDocument({ range: tr, rangeChunkSize: TROZO, disableAutoFetch: false, disableStream: true }).promise;
-  } catch (e) {
-    // Alternativa: descarga completa si el servidor no admite rangos
-    pdf = await pdfjsLib.getDocument({ url: archivo }).promise;
-  }
-} catch (e) {
-  error("No se ha podido mostrar la ficha técnica.");
-  throw e;
-}
-
-const p1 = await pdf.getPage(1);
-const vp = p1.getViewport({ scale: 1 }); ancho0 = vp.width; alto0 = vp.height;
-visor.innerHTML = "";
-
-for (let i = 1; i <= pdf.numPages; i++) {
-  const d = document.createElement("div");
-  d.className = "page"; d.dataset.n = i;
-  visor.appendChild(d); paginas.push(d);
-}
-function dimensionar(){
-  const w = anchoBase() * escala;
-  paginas.forEach(d => { d.style.width = w+"px"; d.style.height = (w*alto0/ancho0)+"px"; d.style.maxWidth = escala>1 ? "none" : "100%"; });
-  paginas.forEach(d => { if (d.dataset.r) { d.dataset.r = ""; d.innerHTML = ""; } });
-  observar();
-}
-async function pintar(d){
-  if (d.dataset.r) return; d.dataset.r = "1";
-  const page = await pdf.getPage(+d.dataset.n);
-  const w = d.clientWidth, dpr = Math.min(window.devicePixelRatio || 1, 2.5);
-  const v = page.getViewport({ scale: (w/ancho0) * dpr });
-  const c = document.createElement("canvas"); c.width = v.width; c.height = v.height;
-  await page.render({ canvasContext: c.getContext("2d"), viewport: v }).promise;
-  d.innerHTML = ""; d.appendChild(c);
-}
-function liberar(d){ if (d.dataset.r) { d.dataset.r = ""; d.innerHTML = ""; } }
 let obs;
 function observar(){
   obs?.disconnect();
   obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? pintar(e.target) : liberar(e.target)), { rootMargin: "150% 0px" });
   paginas.forEach(d => obs.observe(d));
 }
+function dimensionar(){
+  const w = anchoBase() * escala;
+  paginas.forEach(d => { d.style.width = w+"px"; d.style.height = (w * d.dataset.p)+"px"; d.style.maxWidth = escala>1 ? "none" : "100%"; });
+  observar();
+}
 function zoom(f){ escala = Math.max(0.5, Math.min(3, escala*f)); dimensionar(); }
 document.getElementById("mas").onclick = () => zoom(1.25);
 document.getElementById("menos").onclick = () => zoom(0.8);
 let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(dimensionar, 250); });
-dimensionar();
+
+// Vía rápida: imágenes de las páginas preparadas de antemano (content/paginas.json).
+// Solo se usan si corresponden exactamente al PDF publicado (mismo tamaño en bytes).
+async function imagenesPreparadas(){
+  try {
+    const [indice, cabecera] = await Promise.all([
+      fetch("../content/paginas.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : null),
+      fetch(archivo, { method: "HEAD", cache: "no-cache" }),
+    ]);
+    const entrada = indice && indice[archivo];
+    const tam = +cabecera.headers.get("content-length");
+    if (!entrada || !Array.isArray(entrada.pages) || !entrada.pages.length || !tam || tam !== entrada.size) return null;
+    return entrada.pages;
+  } catch (e) {
+    return null;
+  }
+}
+
+const imagenes = await imagenesPreparadas();
+if (imagenes) {
+  crearPaginas(imagenes.map(p => p.h / p.w));
+  paginas.forEach((d, i) => {
+    const img = document.createElement("img");
+    img.src = imagenes[i].src;
+    img.alt = i === 0 ? nombre : "";
+    img.decoding = "async";
+    if (i > 0) img.loading = "lazy";
+    d.appendChild(img);
+  });
+  dimensionar();
+} else {
+  await mostrarPdf();
+}
+
+// Vía de respaldo: dibujar el PDF con pdf.js
+async function mostrarPdf(){
+  const pdfjsLib = await import("../catalogo/pdf.min.mjs");
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "../catalogo/pdf.worker.min.mjs";
+  const TROZO = 131072;
+  async function rango(a, b){
+    const r = await fetch(archivo, { headers: { Range: `bytes=${a}-${b-1}` } });
+    if (r.status !== 206) throw new Error("sin-rangos");
+    return { r, d: new Uint8Array(await r.arrayBuffer()) };
+  }
+  let pdf;
+  try {
+    try {
+      // Carga por trozos: solo se descarga lo necesario para las páginas visibles
+      const ini = await rango(0, TROZO);
+      const total = +ini.r.headers.get("content-range").split("/")[1];
+      const tr = new pdfjsLib.PDFDataRangeTransport(total, ini.d);
+      tr.requestDataRange = (a, b) => {
+        const intento = n => rango(a, b).then(x => tr.onDataRange(a, x.d)).catch(() => { if (n > 0) setTimeout(() => intento(n-1), 800); });
+        intento(3);
+      };
+      pdf = await pdfjsLib.getDocument({ range: tr, rangeChunkSize: TROZO, disableAutoFetch: false, disableStream: true }).promise;
+    } catch (e) {
+      // Alternativa: descarga completa si el servidor no admite rangos
+      pdf = await pdfjsLib.getDocument({ url: archivo }).promise;
+    }
+  } catch (e) {
+    error("No se ha podido mostrar la ficha técnica.");
+    throw e;
+  }
+  const vp = (await pdf.getPage(1)).getViewport({ scale: 1 });
+  crearPaginas(Array.from({ length: pdf.numPages }, () => vp.height / vp.width));
+  pintar = async (d) => {
+    if (d.dataset.r) return; d.dataset.r = "1";
+    const page = await pdf.getPage(+d.dataset.n);
+    const w = d.clientWidth, dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+    const v = page.getViewport({ scale: (w / vp.width) * dpr });
+    const c = document.createElement("canvas"); c.width = v.width; c.height = v.height;
+    await page.render({ canvasContext: c.getContext("2d"), viewport: v }).promise;
+    d.innerHTML = ""; d.appendChild(c);
+  };
+  liberar = (d) => { if (d.dataset.r) { d.dataset.r = ""; d.innerHTML = ""; } };
+  const redimensionar = dimensionar;
+  dimensionar = () => { paginas.forEach(liberar); redimensionar(); pintar(paginas[0]); };
+  dimensionar();
+}
 </script>
 </body>
 </html>

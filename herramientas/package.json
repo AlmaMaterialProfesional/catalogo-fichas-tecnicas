@@ -1,0 +1,13 @@
+{
+  "name": "herramientas-fichas",
+  "private": true,
+  "type": "module",
+  "description": "Genera las imágenes de las páginas de las fichas técnicas para el visor rápido",
+  "scripts": {
+    "paginas": "node generar-paginas.mjs"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "0.1.65",
+    "pdfjs-dist": "4.10.38"
+  }
+}

@@ -6,3 +6,9 @@
   for = "/admin/config.yml"
   [headers.values]
     Content-Type = "text/yaml"
+
+# Las imágenes de páginas llevan la huella del PDF en el nombre: nunca cambian, se pueden guardar en caché
+[[headers]]
+  for = "/uploads/paginas/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
