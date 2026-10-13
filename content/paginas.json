@@ -70,10 +70,10 @@
     ]
   },
   "/uploads/alma-shield.pdf": {
-    "size": 3773803,
+    "size": 5059201,
     "pages": [
       {
-        "src": "/uploads/paginas/alma-shield-dc214ff5-1.jpg",
+        "src": "/uploads/paginas/alma-shield-998e0d70-1.jpg",
         "w": 1556,
         "h": 2200
       }
@@ -495,6 +495,171 @@
       {
         "src": "/uploads/paginas/estopa-sisal-382f1f9f-1.jpg",
         "w": 1556,
+        "h": 2200
+      }
+    ]
+  },
+  "/uploads/estudio-resistencia-grapas-pletinas.pdf": {
+    "size": 2453402,
+    "pages": [
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-1.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-2.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-3.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-4.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-5.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-6.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-7.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-8.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-9.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-10.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-11.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-12.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-13.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-14.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-15.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-16.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-17.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-18.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-19.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-20.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-21.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-22.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-23.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-24.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-25.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-26.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-27.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-28.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-29.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-30.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-31.jpg",
+        "w": 1555,
+        "h": 2200
+      },
+      {
+        "src": "/uploads/paginas/estudio-resistencia-grapas-pletinas-9d0733c4-32.jpg",
+        "w": 1555,
         "h": 2200
       }
     ]

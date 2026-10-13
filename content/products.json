@@ -128,6 +128,12 @@
                          "title":  "Anclajes de fachada",
                          "products":  [
                                           {
+                                              "title":  "Estudio de resistencia de grapas y pletinas",
+                                              "subtitle":  "Cálculo de resistencia · Centro Tecnológico del Metal de Murcia",
+                                              "image":  "/uploads/estudio-resistencia-grapas-pletinas.jpg",
+                                              "pdf":  "/uploads/estudio-resistencia-grapas-pletinas.pdf"
+                                          },
+                                          {
                                               "title":  "Grapa Alpha",
                                               "subtitle":  "Grapas de arranque e intermedias en acero inoxidable",
                                               "image":  "/uploads/grapa-alpha.jpg",
