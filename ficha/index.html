@@ -108,14 +108,22 @@ let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTime
 
 // Vía rápida: imágenes de las páginas preparadas de antemano (content/paginas.json).
 // Solo se usan si corresponden exactamente al PDF publicado (mismo tamaño en bytes).
+// El tamaño real se lee pidiendo un solo byte: el servidor comprime las respuestas
+// completas, pero en las parciales indica el tamaño original del archivo.
+async function tamanoPdf(){
+  const control = new AbortController();
+  const r = await fetch(archivo, { headers: { Range: "bytes=0-0" }, cache: "no-store", signal: control.signal });
+  const rango = r.status === 206 && /\/(\d+)$/.exec(r.headers.get("content-range") || "");
+  control.abort();
+  return rango ? +rango[1] : 0;
+}
 async function imagenesPreparadas(){
   try {
-    const [indice, cabecera] = await Promise.all([
+    const [indice, tam] = await Promise.all([
       fetch("../content/paginas.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : null),
-      fetch(archivo, { method: "HEAD", cache: "no-cache" }),
+      tamanoPdf(),
     ]);
     const entrada = indice && indice[archivo];
-    const tam = +cabecera.headers.get("content-length");
     if (!entrada || !Array.isArray(entrada.pages) || !entrada.pages.length || !tam || tam !== entrada.size) return null;
     return entrada.pages;
   } catch (e) {
