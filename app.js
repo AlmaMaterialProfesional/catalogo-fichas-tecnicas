@@ -1,133 +1,98 @@
-const state = {
-  products: [],
-};
+const contenedor = document.getElementById("secciones");
 
-const grid = document.getElementById("grid");
-const searchInput = document.getElementById("search");
-const categoryFilter = document.getElementById("category-filter");
-const emptyMessage = document.getElementById("empty-message");
-
-const DIACRITICS_PATTERN = new RegExp(
-  "[" + String.fromCharCode(0x0300) + "-" + String.fromCharCode(0x036f) + "]",
-  "g"
-);
-
-function normalize(text) {
-  return (text || "")
-    .toString()
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(DIACRITICS_PATTERN, "");
+function el(tag, clase, texto) {
+  const nodo = document.createElement(tag);
+  if (clase) nodo.className = clase;
+  if (texto) nodo.textContent = texto;
+  return nodo;
 }
 
-function renderCard(product) {
-  const card = document.createElement("article");
-  card.className = "card";
+function enlaceFicha(producto) {
+  const params = new URLSearchParams({ f: producto.pdf, t: producto.title });
+  return "ficha/?" + params.toString();
+}
 
-  const imageWrap = document.createElement("div");
-  imageWrap.className = "card-image";
-  if (product.image) {
-    const img = document.createElement("img");
-    img.src = product.image;
-    img.alt = product.title || "";
+function renderProducto(producto) {
+  const a = el("a", "producto");
+  a.href = enlaceFicha(producto);
+
+  const foto = el("span", "producto-foto");
+  if (producto.image) {
+    const img = el("img");
+    img.src = producto.image;
+    img.alt = "";
     img.loading = "lazy";
-    imageWrap.appendChild(img);
+    foto.appendChild(img);
+  }
+
+  const textos = el("span", "producto-textos");
+  textos.appendChild(el("span", "producto-nombre", producto.title));
+  if (producto.subtitle) textos.appendChild(el("span", "producto-sub", producto.subtitle));
+
+  const accion = el("span", "producto-accion", "Ver ficha");
+
+  a.append(foto, textos, accion);
+  return a;
+}
+
+function renderSeccion(seccion, indice) {
+  const productos = Array.isArray(seccion.products) ? seccion.products : [];
+  const details = el("details", "seccion");
+  details.id = "s" + (indice + 1);
+
+  const summary = el("summary", "seccion-cabecera");
+  summary.appendChild(el("span", "seccion-num", String(indice + 1)));
+  const titulos = el("span", "seccion-titulos");
+  titulos.appendChild(el("span", "seccion-titulo", seccion.title));
+  titulos.appendChild(el("span", "seccion-cuenta",
+    productos.length ? productos.length + (productos.length === 1 ? " producto" : " productos") : "Próximamente"));
+  summary.appendChild(titulos);
+  summary.appendChild(el("span", "seccion-flecha"));
+  details.appendChild(summary);
+
+  const lista = el("div", "seccion-lista");
+  if (productos.length) {
+    productos.forEach((p) => lista.appendChild(renderProducto(p)));
   } else {
-    const placeholder = document.createElement("span");
-    placeholder.className = "placeholder";
-    placeholder.textContent = "Sin imagen";
-    imageWrap.appendChild(placeholder);
+    lista.appendChild(el("p", "seccion-vacia", "Estamos preparando las fichas técnicas de esta sección. Muy pronto estarán disponibles."));
   }
+  details.appendChild(lista);
 
-  const body = document.createElement("div");
-  body.className = "card-body";
-
-  const title = document.createElement("h2");
-  title.className = "card-title";
-  title.textContent = product.title || "Sin nombre";
-  body.appendChild(title);
-
-  const variants = Array.isArray(product.variants) ? product.variants : [];
-  if (variants.length) {
-    const codeList = document.createElement("div");
-    codeList.className = "card-codes";
-    variants.forEach((variant) => {
-      const chip = document.createElement("span");
-      chip.className = "code-chip";
-      chip.textContent = variant.size ? `${variant.code} (${variant.size})` : variant.code;
-      codeList.appendChild(chip);
+  details.addEventListener("toggle", () => {
+    if (!details.open) {
+      if (location.hash === "#" + details.id) history.replaceState(null, "", location.pathname);
+      return;
+    }
+    document.querySelectorAll("details.seccion[open]").forEach((otro) => {
+      if (otro !== details) otro.open = false;
     });
-    body.appendChild(codeList);
-  }
-
-  if (product.category) {
-    const category = document.createElement("span");
-    category.className = "card-category";
-    category.textContent = product.category;
-    body.appendChild(category);
-  }
-
-  const link = document.createElement(product.pdf ? "a" : "span");
-  link.className = "card-link" + (product.pdf ? "" : " disabled");
-  link.textContent = product.pdf ? "Ver ficha técnica" : "Ficha no disponible";
-  if (product.pdf) {
-    link.href = product.pdf;
-    link.target = "_blank";
-    link.rel = "noopener";
-  }
-  body.appendChild(link);
-
-  card.appendChild(imageWrap);
-  card.appendChild(body);
-  return card;
-}
-
-function populateCategories(products) {
-  const categories = Array.from(
-    new Set(products.map((p) => p.category).filter(Boolean))
-  ).sort((a, b) => a.localeCompare(b, "es"));
-
-  categories.forEach((category) => {
-    const option = document.createElement("option");
-    option.value = category;
-    option.textContent = category;
-    categoryFilter.appendChild(option);
-  });
-}
-
-function applyFilters() {
-  const query = normalize(searchInput.value);
-  const category = categoryFilter.value;
-
-  const filtered = state.products.filter((product) => {
-    const variants = Array.isArray(product.variants) ? product.variants : [];
-    const matchesQuery =
-      !query ||
-      normalize(product.title).includes(query) ||
-      variants.some((variant) => normalize(variant.code).includes(query));
-    const matchesCategory = !category || product.category === category;
-    return matchesQuery && matchesCategory;
+    history.replaceState(null, "", "#" + details.id);
+    const arriba = summary.getBoundingClientRect().top;
+    if (arriba < 0 || arriba > window.innerHeight * 0.6) {
+      summary.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
 
-  grid.innerHTML = "";
-  filtered.forEach((product) => grid.appendChild(renderCard(product)));
-  emptyMessage.hidden = filtered.length !== 0;
+  return details;
 }
 
 async function init() {
+  let secciones = [];
   try {
-    const response = await fetch("content/products.json", { cache: "no-store" });
-    const data = await response.json();
-    state.products = Array.isArray(data.products) ? data.products : [];
-  } catch (err) {
-    state.products = [];
+    const respuesta = await fetch("content/products.json", { cache: "no-cache" });
+    const datos = await respuesta.json();
+    secciones = Array.isArray(datos.sections) ? datos.sections : [];
+  } catch (e) {
+    contenedor.innerHTML = "";
+    contenedor.appendChild(el("p", "aviso", "No se han podido cargar las fichas técnicas. Inténtalo de nuevo en unos minutos."));
+    return;
   }
 
-  populateCategories(state.products);
-  applyFilters();
-}
+  contenedor.innerHTML = "";
+  secciones.forEach((s, i) => contenedor.appendChild(renderSeccion(s, i)));
 
-searchInput.addEventListener("input", applyFilters);
-categoryFilter.addEventListener("change", applyFilters);
+  const abierta = location.hash && document.querySelector("details.seccion" + location.hash);
+  if (abierta) abierta.open = true;
+}
 
 init();

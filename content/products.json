@@ -1,13 +1,549 @@
 {
-  "products": [
-    {
-      "title": "VENTOSA VB260",
-      "category": "MAQUINARIA",
-      "image": "/uploads/ventosa-de-baldosa-alma.png",
-      "pdf": "/uploads/ficha-tecnica-ventosa.pdf",
-      "variants": [
-        { "code": "807", "size": "" }
-      ]
-    }
-  ]
+    "sections":  [
+                     {
+                         "title":  "Sistema de nivelación",
+                         "products":  [
+                                          {
+                                              "title":  "LevelPro Cuña Estrecha",
+                                              "subtitle":  "Sistema de nivelación para cuña estrecha",
+                                              "image":  "/uploads/levelpro-cuna-estrecha.jpg",
+                                              "pdf":  "/uploads/levelpro-cuna-estrecha.pdf"
+                                          },
+                                          {
+                                              "title":  "LevelPro Cuña Ancha",
+                                              "subtitle":  "Sistema de nivelación para cuña ancha",
+                                              "image":  "/uploads/levelpro-cuna-ancha.jpg",
+                                              "pdf":  "/uploads/levelpro-cuna-ancha.pdf"
+                                          },
+                                          {
+                                              "title":  "Level Mini",
+                                              "subtitle":  "Calidad al alcance de todos",
+                                              "image":  "/uploads/level-mini.jpg",
+                                              "pdf":  "/uploads/level-mini.pdf"
+                                          },
+                                          {
+                                              "title":  "DuoFix Piedra",
+                                              "subtitle":  "Versatilidad para grandes espesores",
+                                              "image":  "/uploads/duofix-piedra.jpg",
+                                              "pdf":  "/uploads/duofix-piedra.pdf"
+                                          },
+                                          {
+                                              "title":  "Alicate de nivelación ergonómico",
+                                              "subtitle":  "Puntera estrecha, ancha o doble",
+                                              "image":  "/uploads/alicate-nivelacion-ergonomico.jpg",
+                                              "pdf":  "/uploads/alicate-nivelacion-ergonomico.pdf"
+                                          },
+                                          {
+                                              "title":  "Separadores de baldosas",
+                                              "subtitle":  "Crucetas en cruz, crucetas en T y cuñas para azulejo",
+                                              "image":  "/uploads/separadores-baldosas.jpg",
+                                              "pdf":  "/uploads/separadores-baldosas.pdf"
+                                          }
+                                      ]
+                     },
+                     {
+                         "title":  "Productos químicos",
+                         "products":  [
+                                          {
+                                              "title":  "Arid Grip",
+                                              "subtitle":  "Puente de unión con áridos",
+                                              "image":  "/uploads/arid-grip.jpg",
+                                              "pdf":  "/uploads/arid-grip.pdf"
+                                          },
+                                          {
+                                              "title":  "Alma-Tack Pro",
+                                              "subtitle":  "Puente de unión líquido · Máximo rendimiento",
+                                              "image":  "/uploads/alma-tack-pro.jpg",
+                                              "pdf":  "/uploads/alma-tack-pro.pdf"
+                                          },
+                                          {
+                                              "title":  "Alma-Tack Classic",
+                                              "subtitle":  "Puente de unión líquido · Alta eficacia",
+                                              "image":  "/uploads/alma-tack-classic.jpg",
+                                              "pdf":  "/uploads/alma-tack-classic.pdf"
+                                          },
+                                          {
+                                              "title":  "Desencofrante DP100 Puro",
+                                              "subtitle":  "Líquido de desmoldeo para hormigón · Concentrado",
+                                              "image":  "/uploads/desencofrante-dp100-puro.jpg",
+                                              "pdf":  "/uploads/desencofrante-dp100-puro.pdf"
+                                          },
+                                          {
+                                              "title":  "Desencofrante DP200 Profesional",
+                                              "subtitle":  "Líquido de desmoldeo para hormigón · Alto rendimiento",
+                                              "image":  "/uploads/desencofrante-dp200-profesional.jpg",
+                                              "pdf":  "/uploads/desencofrante-dp200-profesional.pdf"
+                                          },
+                                          {
+                                              "title":  "Desencofrante DU300 Al uso",
+                                              "subtitle":  "Líquido de desmoldeo para hormigón · Listo para usar",
+                                              "image":  "/uploads/desencofrante-du300-al-uso.jpg",
+                                              "pdf":  "/uploads/desencofrante-du300-al-uso.pdf"
+                                          },
+                                          {
+                                              "title":  "Impegot",
+                                              "subtitle":  "Impermeabilizante acrílico",
+                                              "image":  "/uploads/impegot.jpg",
+                                              "pdf":  "/uploads/impegot.pdf"
+                                          },
+                                          {
+                                              "title":  "MS-11",
+                                              "subtitle":  "Polímero para pegado y sellado",
+                                              "image":  "/uploads/ms-11.jpg",
+                                              "pdf":  "/uploads/ms-11.pdf"
+                                          },
+                                          {
+                                              "title":  "Bitusec",
+                                              "subtitle":  "Pintura bituminosa",
+                                              "image":  "/uploads/bitusec.jpg",
+                                              "pdf":  "/uploads/bitusec.pdf"
+                                          },
+                                          {
+                                              "title":  "Descem",
+                                              "subtitle":  "Desincrustante de cemento",
+                                              "image":  "/uploads/descem.jpg",
+                                              "pdf":  "/uploads/descem.pdf"
+                                          },
+                                          {
+                                              "title":  "Polifloor Dur",
+                                              "subtitle":  "Resina para hormigón impreso e impermeabilizante de fachadas",
+                                              "image":  "/uploads/polifloor-dur.jpg",
+                                              "pdf":  "/uploads/polifloor-dur.pdf"
+                                          },
+                                          {
+                                              "title":  "Hidrim",
+                                              "subtitle":  "Hidrofugante líquido impermeabilizante",
+                                              "image":  "/uploads/hidrim.jpg",
+                                              "pdf":  "/uploads/hidrim.pdf"
+                                          },
+                                          {
+                                              "title":  "Fijazu",
+                                              "subtitle":  "Fijador de azulete",
+                                              "image":  "/uploads/fijazu.jpg",
+                                              "pdf":  "/uploads/fijazu.pdf"
+                                          }
+                                      ]
+                     },
+                     {
+                         "title":  "Anclajes de fachada",
+                         "products":  [
+                                          {
+                                              "title":  "Grapa Alpha",
+                                              "subtitle":  "Grapas de arranque e intermedias en acero inoxidable",
+                                              "image":  "/uploads/grapa-alpha.jpg",
+                                              "pdf":  "/uploads/grapa-alpha.pdf"
+                                          },
+                                          {
+                                              "title":  "Pletina Forte",
+                                              "subtitle":  "Pletina troquelada en acero inoxidable",
+                                              "image":  "/uploads/pletina-forte.jpg",
+                                              "pdf":  "/uploads/pletina-forte.pdf"
+                                          },
+                                          {
+                                              "title":  "Grapa Omega",
+                                              "subtitle":  "Máxima resistencia y durabilidad",
+                                              "image":  "/uploads/grapa-omega.jpg",
+                                              "pdf":  "/uploads/grapa-omega.pdf"
+                                          },
+                                          {
+                                              "title":  "Taco de golpe + tornillo",
+                                              "subtitle":  "Anclaje plástico para fijación de grapas de fachada",
+                                              "image":  "/uploads/taco-golpe-tornillo.jpg",
+                                              "pdf":  "/uploads/taco-golpe-tornillo.pdf"
+                                          }
+                                      ]
+                     },
+                     {
+                         "title":  "Discos y coronas",
+                         "products":  [
+                                          {
+                                              "title":  "Disco Top Gun",
+                                              "subtitle":  "Para porcelánico",
+                                              "image":  "/uploads/disco-top-gun.jpg",
+                                              "pdf":  "/uploads/disco-top-gun.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Turbo Flash",
+                                              "subtitle":  "Para porcelánico",
+                                              "image":  "/uploads/disco-turbo-flash.jpg",
+                                              "pdf":  "/uploads/disco-turbo-flash.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Predator",
+                                              "subtitle":  "Para porcelánico",
+                                              "image":  "/uploads/disco-predator.jpg",
+                                              "pdf":  "/uploads/disco-predator.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Porcelánico 25",
+                                              "subtitle":  "Para porcelánico · Mesa de agua",
+                                              "image":  "/uploads/disco-porcelanico-25.jpg",
+                                              "pdf":  "/uploads/disco-porcelanico-25.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Turbo Porcelánico",
+                                              "subtitle":  "Para porcelánico",
+                                              "image":  "/uploads/disco-turbo-porcelanico.jpg",
+                                              "pdf":  "/uploads/disco-turbo-porcelanico.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Multiporcelánico",
+                                              "subtitle":  "Para porcelánico · Mesa de agua",
+                                              "image":  "/uploads/disco-multiporcelanico.jpg",
+                                              "pdf":  "/uploads/disco-multiporcelanico.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Inglete",
+                                              "subtitle":  "Para porcelánico · Cortes en inglete",
+                                              "image":  "/uploads/disco-inglete.jpg",
+                                              "pdf":  "/uploads/disco-inglete.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Granito",
+                                              "subtitle":  "Para materiales duros y abrasivos",
+                                              "image":  "/uploads/disco-granito.jpg",
+                                              "pdf":  "/uploads/disco-granito.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco General de Obra",
+                                              "subtitle":  "Para uso general",
+                                              "image":  "/uploads/disco-general-de-obra.jpg",
+                                              "pdf":  "/uploads/disco-general-de-obra.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Super Cantero",
+                                              "subtitle":  "Para uso general",
+                                              "image":  "/uploads/disco-super-cantero.jpg",
+                                              "pdf":  "/uploads/disco-super-cantero.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Granito Caravista",
+                                              "subtitle":  "Para uso general · Mesa de agua",
+                                              "image":  "/uploads/disco-granito-caravista.jpg",
+                                              "pdf":  "/uploads/disco-granito-caravista.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Inicio",
+                                              "subtitle":  "Para ranura de calzo de nivelación",
+                                              "image":  "/uploads/disco-inicio.jpg",
+                                              "pdf":  "/uploads/disco-inicio.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Krystal",
+                                              "subtitle":  "Para corte de cristal",
+                                              "image":  "/uploads/disco-krystal.jpg",
+                                              "pdf":  "/uploads/disco-krystal.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Softglass",
+                                              "subtitle":  "Para pulido de cristal",
+                                              "image":  "/uploads/disco-softglass.jpg",
+                                              "pdf":  "/uploads/disco-softglass.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco multiláminas Raptor",
+                                              "subtitle":  "3 en 1: desbasta, lija y pule",
+                                              "image":  "/uploads/disco-raptor.jpg",
+                                              "pdf":  "/uploads/disco-raptor.pdf"
+                                          },
+                                          {
+                                              "title":  "Discos multiláminas Prolayer",
+                                              "subtitle":  "Grano 60, 120 y 200",
+                                              "image":  "/uploads/discos-prolayer.jpg",
+                                              "pdf":  "/uploads/discos-prolayer.pdf"
+                                          },
+                                          {
+                                              "title":  "Coronas diamantadas",
+                                              "subtitle":  "Eje M14 para porcelánico",
+                                              "image":  "/uploads/coronas-diamantadas.jpg",
+                                              "pdf":  "/uploads/coronas-diamantadas.pdf"
+                                          },
+                                          {
+                                              "title":  "Fingers diamantados",
+                                              "subtitle":  "Eje M14 para porcelánico",
+                                              "image":  "/uploads/fingers-diamantados.jpg",
+                                              "pdf":  "/uploads/fingers-diamantados.pdf"
+                                          },
+                                          {
+                                              "title":  "Disco Cat-Cut",
+                                              "subtitle":  "Para corte de acero",
+                                              "image":  "/uploads/disco-cat-cut.jpg",
+                                              "pdf":  "/uploads/disco-cat-cut.pdf"
+                                          },
+                                          {
+                                              "title":  "Kit adaptador para taladro",
+                                              "subtitle":  "Para usar discos de radial en el taladro",
+                                              "image":  "/uploads/kit-adaptador-taladro.jpg",
+                                              "pdf":  "/uploads/kit-adaptador-taladro.pdf"
+                                          }
+                                      ]
+                     },
+                     {
+                         "title":  "Máquinas y herramientas",
+                         "products":  [
+                                          {
+                                              "title":  "Alma Mixer 1800",
+                                              "subtitle":  "Batidora para mortero",
+                                              "image":  "/uploads/alma-mixer-1800.jpg",
+                                              "pdf":  "/uploads/alma-mixer-1800.pdf"
+                                          },
+                                          {
+                                              "title":  "VR Tile Pro",
+                                              "subtitle":  "Vibradora para baldosas",
+                                              "image":  "/uploads/vr-tile-pro.jpg",
+                                              "pdf":  "/uploads/vr-tile-pro.pdf"
+                                          },
+                                          {
+                                              "title":  "VN 260",
+                                              "subtitle":  "Ventosa para baldosas",
+                                              "image":  "/uploads/vn-260.jpg",
+                                              "pdf":  "/uploads/vn-260.pdf"
+                                          },
+                                          {
+                                              "title":  "AM-Lite 850",
+                                              "subtitle":  "Amoladora angular ligera",
+                                              "image":  "/uploads/am-lite-850.jpg",
+                                              "pdf":  "/uploads/am-lite-850.pdf"
+                                          },
+                                          {
+                                              "title":  "AM-Control 1200",
+                                              "subtitle":  "Amoladora angular con regulación",
+                                              "image":  "/uploads/am-control-1200.jpg",
+                                              "pdf":  "/uploads/am-control-1200.pdf"
+                                          },
+                                          {
+                                              "title":  "Adaptador oblicuo",
+                                              "subtitle":  "Accesorio amoladora angular",
+                                              "image":  "/uploads/adaptador-oblicuo.jpg",
+                                              "pdf":  "/uploads/adaptador-oblicuo.pdf"
+                                          },
+                                          {
+                                              "title":  "Adaptador horizontal",
+                                              "subtitle":  "Accesorio amoladora angular",
+                                              "image":  "/uploads/adaptador-horizontal.jpg",
+                                              "pdf":  "/uploads/adaptador-horizontal.pdf"
+                                          },
+                                          {
+                                              "title":  "Adaptador para inglete",
+                                              "subtitle":  "Accesorio amoladora angular",
+                                              "image":  "/uploads/adaptador-inglete.jpg",
+                                              "pdf":  "/uploads/adaptador-inglete.pdf"
+                                          },
+                                          {
+                                              "title":  "Antichok 360",
+                                              "subtitle":  "Proyector LED",
+                                              "image":  "/uploads/antichok-360.jpg",
+                                              "pdf":  "/uploads/antichok-360.pdf"
+                                          },
+                                          {
+                                              "title":  "Alma Rail Go",
+                                              "subtitle":  "Cortadora de azulejos",
+                                              "image":  "/uploads/alma-rail-go.jpg",
+                                              "pdf":  "/uploads/alma-rail-go.pdf"
+                                          },
+                                          {
+                                              "title":  "Encofratec",
+                                              "subtitle":  "Tablero para encofrado",
+                                              "image":  "/uploads/encofratec.jpg",
+                                              "pdf":  "/uploads/encofratec.pdf"
+                                          },
+                                          {
+                                              "title":  "Sumidero ducha invisible",
+                                              "subtitle":  "Sistema de desagüe para ducha",
+                                              "image":  "/uploads/sumidero-ducha-invisible.jpg",
+                                              "pdf":  "/uploads/sumidero-ducha-invisible.pdf"
+                                          },
+                                          {
+                                              "title":  "Inverter MMA-200",
+                                              "subtitle":  "Máquina de soldar manual",
+                                              "image":  "/uploads/inverter-mma-200.jpg",
+                                              "pdf":  "/uploads/inverter-mma-200.pdf"
+                                          },
+                                          {
+                                              "title":  "Caballete telescópico",
+                                              "subtitle":  "Soporte regulable",
+                                              "image":  "/uploads/caballete-telescopico.jpg",
+                                              "pdf":  "/uploads/caballete-telescopico.pdf"
+                                          },
+                                          {
+                                              "title":  "Sargento elevador",
+                                              "subtitle":  "Elevador nivelador de azulejos",
+                                              "image":  "/uploads/sargento-elevador.jpg",
+                                              "pdf":  "/uploads/sargento-elevador.pdf"
+                                          },
+                                          {
+                                              "title":  "Guía para escalera",
+                                              "subtitle":  "Herramienta para instalar escaleras",
+                                              "image":  "/uploads/guia-escalera.jpg",
+                                              "pdf":  "/uploads/guia-escalera.pdf"
+                                          },
+                                          {
+                                              "title":  "Mini telémetro",
+                                              "subtitle":  "Mini medidor láser",
+                                              "image":  "/uploads/mini-telemetro.jpg",
+                                              "pdf":  "/uploads/mini-telemetro.pdf"
+                                          },
+                                          {
+                                              "title":  "Alma Temp",
+                                              "subtitle":  "Pulsera medidora de temperatura corporal",
+                                              "image":  "/uploads/alma-temp.jpg",
+                                              "pdf":  "/uploads/alma-temp.pdf"
+                                          }
+                                      ]
+                     },
+                     {
+                         "title":  "Perfiles y cantoneras",
+                         "products":  [
+
+                                      ]
+                     },
+                     {
+                         "title":  "Limpieza y rejunteo",
+                         "products":  [
+                                          {
+                                              "title":  "Cubo de limpieza",
+                                              "subtitle":  "Lavado y escurrido de llanas",
+                                              "image":  "/uploads/cubo-limpieza.jpg",
+                                              "pdf":  "/uploads/cubo-limpieza.pdf"
+                                          },
+                                          {
+                                              "title":  "Llana de rejunteo",
+                                              "subtitle":  "Aplicación de morteros de juntas",
+                                              "image":  "/uploads/llana-rejunteo.jpg",
+                                              "pdf":  "/uploads/llana-rejunteo.pdf"
+                                          },
+                                          {
+                                              "title":  "Llana de limpieza",
+                                              "subtitle":  "Talocha de lavado para juntas",
+                                              "image":  "/uploads/llana-limpieza.jpg",
+                                              "pdf":  "/uploads/llana-limpieza.pdf"
+                                          },
+                                          {
+                                              "title":  "Llana de limpieza para mango",
+                                              "subtitle":  "Compatible con mango de rosca estándar",
+                                              "image":  "/uploads/llana-limpieza-mango.jpg",
+                                              "pdf":  "/uploads/llana-limpieza-mango.pdf"
+                                          },
+                                          {
+                                              "title":  "Esponjas de limpieza",
+                                              "subtitle":  "Dureza media y dureza blanda",
+                                              "image":  "/uploads/esponjas-limpieza.jpg",
+                                              "pdf":  "/uploads/esponjas-limpieza.pdf"
+                                          },
+                                          {
+                                              "title":  "Llana para fratasar",
+                                              "subtitle":  "Alisado de morteros y revestimientos",
+                                              "image":  "/uploads/llana-fratasar.jpg",
+                                              "pdf":  "/uploads/llana-fratasar.pdf"
+                                          },
+                                          {
+                                              "title":  "Paños de microfibra",
+                                              "subtitle":  "Limpieza de juntas cementosas y epoxídicas",
+                                              "image":  "/uploads/panos-microfibra.jpg",
+                                              "pdf":  "/uploads/panos-microfibra.pdf"
+                                          },
+                                          {
+                                              "title":  "Estopa sisal",
+                                              "subtitle":  "Fibra natural para limpieza y acabado",
+                                              "image":  "/uploads/estopa-sisal.jpg",
+                                              "pdf":  "/uploads/estopa-sisal.pdf"
+                                          },
+                                          {
+                                              "title":  "Kit de limpieza ALMA",
+                                              "subtitle":  "Cubo + llana de limpieza + llana de rejunteo",
+                                              "image":  "/uploads/kit-limpieza.jpg",
+                                              "pdf":  "/uploads/kit-limpieza.pdf"
+                                          }
+                                      ]
+                     },
+                     {
+                         "title":  "Productos varios",
+                         "products":  [
+                                          {
+                                              "title":  "Alma Shield",
+                                              "subtitle":  "Zapatos de protección S1P",
+                                              "image":  "/uploads/alma-shield.jpg",
+                                              "pdf":  "/uploads/alma-shield.pdf"
+                                          },
+                                          {
+                                              "title":  "Malla mortero 90 g",
+                                              "subtitle":  "Refuerzo de morteros y revocos",
+                                              "image":  "/uploads/malla-mortero-90.jpg",
+                                              "pdf":  "/uploads/malla-mortero-90.pdf"
+                                          },
+                                          {
+                                              "title":  "Malla mortero 160 g",
+                                              "subtitle":  "Refuerzo para sistemas SATE",
+                                              "image":  "/uploads/malla-mortero-160.jpg",
+                                              "pdf":  "/uploads/malla-mortero-160.pdf"
+                                          },
+                                          {
+                                              "title":  "Malla yeso 75 g",
+                                              "subtitle":  "Refuerzo de yesos y enlucidos",
+                                              "image":  "/uploads/malla-yeso.jpg",
+                                              "pdf":  "/uploads/malla-yeso.pdf"
+                                          },
+                                          {
+                                              "title":  "Malla para pintura",
+                                              "subtitle":  "Refuerzo de pinturas y revestimientos",
+                                              "image":  "/uploads/malla-pintura.jpg",
+                                              "pdf":  "/uploads/malla-pintura.pdf"
+                                          },
+                                          {
+                                              "title":  "Velo para pintura",
+                                              "subtitle":  "Refuerzo de pinturas e impermeabilizaciones",
+                                              "image":  "/uploads/velo-pintura.jpg",
+                                              "pdf":  "/uploads/velo-pintura.pdf"
+                                          },
+                                          {
+                                              "title":  "Malla de balizamiento",
+                                              "subtitle":  "Señalización y delimitación de obras",
+                                              "image":  "/uploads/malla-balizamiento.jpg",
+                                              "pdf":  "/uploads/malla-balizamiento.pdf"
+                                          },
+                                          {
+                                              "title":  "Varilla corrugada",
+                                              "subtitle":  "Poliéster reforzado con fibra de vidrio",
+                                              "image":  "/uploads/varilla-corrugada.jpg",
+                                              "pdf":  "/uploads/varilla-corrugada.pdf"
+                                          },
+                                          {
+                                              "title":  "Apoyos pavimento elevado",
+                                              "subtitle":  "Soporte regulable para pavimentos",
+                                              "image":  "/uploads/apoyos-pavimento-elevado.jpg",
+                                              "pdf":  "/uploads/apoyos-pavimento-elevado.pdf"
+                                          },
+                                          {
+                                              "title":  "Almaimper R2",
+                                              "subtitle":  "Membrana transpirable impermeable",
+                                              "image":  "/uploads/almaimper-r2.jpg",
+                                              "pdf":  "/uploads/almaimper-r2.pdf"
+                                          },
+                                          {
+                                              "title":  "Almareflex A3",
+                                              "subtitle":  "Sistema aislante reflexivo",
+                                              "image":  "/uploads/almareflex-a3.jpg",
+                                              "pdf":  "/uploads/almareflex-a3.pdf"
+                                          },
+                                          {
+                                              "title":  "Espiga de fijación para panel aislante",
+                                              "subtitle":  "Clavo de expansión para anclaje",
+                                              "image":  "/uploads/espiga-panel-aislante.jpg",
+                                              "pdf":  "/uploads/espiga-panel-aislante.pdf"
+                                          },
+                                          {
+                                              "title":  "Espiga de fijación para aislante reflexivo",
+                                              "subtitle":  "Para aislante reflexivo Almareflex",
+                                              "image":  "/uploads/espiga-aislante-reflexivo.jpg",
+                                              "pdf":  "/uploads/espiga-aislante-reflexivo.pdf"
+                                          },
+                                          {
+                                              "title":  "Guante de látex fluorescente",
+                                              "subtitle":  "Accesorios de seguridad",
+                                              "image":  "/uploads/guante-latex-fluorescente.jpg",
+                                              "pdf":  "/uploads/guante-latex-fluorescente.pdf"
+                                          }
+                                      ]
+                     }
+                 ]
 }

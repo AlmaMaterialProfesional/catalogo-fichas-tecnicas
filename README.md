@@ -4,8 +4,10 @@ Sitio web estático para consultar las fichas técnicas (PDF) de los productos d
 
 ## Cómo funciona
 
-- `index.html`, `style.css`, `app.js`: la página pública. Lee `content/products.json` y muestra los productos en tarjetas con buscador y filtro por categoría.
-- `content/products.json`: la "base de datos" de productos (un único archivo).
+- `index.html`, `style.css`, `app.js`: la página pública (a la que lleva el QR). Lee `content/products.json` y muestra las secciones del catálogo como desplegables con sus productos.
+- `ficha/`: visor de fichas técnicas; muestra el PDF dentro de la web (usa el motor PDF de `catalogo/`).
+- `catalogo/`: visor online del catálogo completo.
+- `content/products.json`: la "base de datos": secciones, y dentro de cada una sus productos en orden (nombre, descripción corta, imagen y PDF).
 - `admin/`: panel de administración (Decap CMS) para añadir, editar o borrar productos con formularios, sin tocar código.
 - `uploads/`: aquí se guardan las imágenes y PDFs que se suban desde el panel.
 

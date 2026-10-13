@@ -14,19 +14,18 @@ collections:
         label: Productos
         file: content/products.json
         fields:
-          - label: Productos
-            name: products
+          - label: Secciones
+            name: sections
             widget: list
             summary: "{{fields.title}}"
             fields:
-              - { label: "Nombre del producto", name: "title", widget: "string" }
-              - { label: "Categoría", name: "category", widget: "string", required: false }
-              - { label: "Imagen", name: "image", widget: "image", required: false }
-              - { label: "Ficha técnica (PDF)", name: "pdf", widget: "file", required: false }
-              - label: "Códigos / medidas"
-                name: variants
+              - { label: "Nombre de la sección", name: "title", widget: "string" }
+              - label: Productos
+                name: products
                 widget: list
-                summary: "{{fields.code}} {{fields.size}}"
+                summary: "{{fields.title}}"
                 fields:
-                  - { label: "Código / SKU", name: "code", widget: "string" }
-                  - { label: "Medida (opcional)", name: "size", widget: "string", required: false }
+                  - { label: "Nombre del producto", name: "title", widget: "string" }
+                  - { label: "Descripción corta", name: "subtitle", widget: "string", required: false }
+                  - { label: "Imagen", name: "image", widget: "image", required: false }
+                  - { label: "Ficha técnica (PDF)", name: "pdf", widget: "file" }
